@@ -5,10 +5,11 @@ import time, random, turtle
 # screen setup
 scr = turtle.Screen()
 scr.title("Sorting Algorithms Visualizer")
-Width = 600
-Height = 500
-scr.setup(width=Width, height=Height)
+Width=800
+Height=500
+scr.setup(width=800, height=500)
 scr.tracer(0,0)
+scr.bgpic('C:/Users/vyshnav/Desktop/Sorting-Algo-Visualiser/images/rias.gif')
 scr.cv._rootwindow.resizable(False, False)
 
 # rendering turtle
@@ -28,12 +29,14 @@ namer = turtle.Turtle()
 namer.penup()
 namer.goto(0,Height/2-20)
 namer.hideturtle()
+namer.color('white')
 
 # time and comparisions illustrator
 timer = turtle.Turtle()
 timer.penup()
 timer.goto(0, Height/2-35)
 timer.hideturtle()
+timer.color('white')
 
 # function to draw a rectangle
 def rectangle (x,y,w,h,color):
@@ -50,6 +53,20 @@ def rectangle (x,y,w,h,color):
     renderer.end_fill()
     renderer.penup()
 
+    #outine
+    renderer.goto(x,y)
+    renderer.color("white")
+    renderer.pendown()
+    for i in range(3):
+        renderer.goto(x,y)
+        #renderer.pendown()
+        renderer.goto(x+w,y)
+        renderer.goto(x+w,y-h)
+        renderer.goto(x,y-h)
+        renderer.goto(x,y)
+        
+
+
 # rendering function
 def render(array, highlight=[], pivot=[]):
     global tot_comparisions, start
@@ -61,7 +78,7 @@ def render(array, highlight=[], pivot=[]):
     length = n_elements
     wid = 400/n_elements
     for i,j in enumerate(array):
-        color="blue" if i in pivot else "red" if i in highlight else "#111"
+        color="cyan" if i in pivot else "blue" if i in highlight else "#AB3AD2"
         rectangle((i-length/2)*wid,(j-length/2)*wid,wid,(j+1)*wid, color)
         # rectangle((i-length/2)*400/length,(j-length/2)*400/length,wid,wid,color)
     scr.update()
@@ -225,7 +242,7 @@ while True:
     tosort = scramble(n_elements)
     method = int(scr.numinput(
         "Select algorithm",
-        "enter\n 1 for selection sort\n 2 for bubblesort\n 3 for combsort\n 4 for insertion sort\n 5 for binary insertion sort\n 6 for quick sort\n 7 for merge sort", 
+        "Enter\n 1 for Selection sort\n 2 for Bubblesort\n 3 for combsort\n 4 for Insertion sort\n 5 for Binary insertion sort\n 6 for Quick sort\n 7 for Merge sort",
         default=method, 
         minval=1,
         maxval=7)
