@@ -9,7 +9,7 @@ Width=800
 Height=500
 scr.setup(width=800, height=500)
 scr.tracer(0,0)
-scr.bgpic('C:/Users/vyshnav/Desktop/Sorting-Algo-Visualiser/images/rias.gif')
+scr.bgpic('images/bg.gif')
 scr.cv._rootwindow.resizable(False, False)
 
 # rendering turtle
@@ -18,9 +18,9 @@ renderer.hideturtle()
 renderer.penup()
 
 # initial settings
-n_elements = 100
-time_delay = 0
-method = 5
+n_elements = 25
+time_delay = 0.5
+method = 1 #setting default sorting value as 1st method
 tot_comparisions = 0
 start = time.time()
 
@@ -82,8 +82,10 @@ def render(array, highlight=[], pivot=[]):
         rectangle((i-length/2)*wid,(j-length/2)*wid,wid,(j+1)*wid, color)
         # rectangle((i-length/2)*400/length,(j-length/2)*400/length,wid,wid,color)
     scr.update()
-    if (time_delay):
-        time.sleep(time_delay)
+    if (time_delay):#---------------------------------------------------------------------------------------------------------------
+        if tmr_var==1:time.sleep(0.5)
+        elif tmr_var==2:time.sleep(0.25)
+        elif tmr_var==3:time.sleep(0)
 
 # main array suffling function
 def scramble(l):
@@ -98,6 +100,7 @@ def scramble(l):
 # display name
 def show_name(name):
     namer.clear();namer.setx(0);namer.write(name.title(),True,align="center")
+
 
 """ algos """
 def selectionsort(array):
@@ -227,12 +230,13 @@ def mergesort(array, l=0, r=-1):
 
 # main loop
 while True:
+
     # getting user inputs
     tot_comparisions = 0
-    time_delay = 0
+    time_delay = 0.5
     n_elements = int(scr.numinput(
         "Number of elements",
-        "enter number of elements in range [1,300]", 
+        "Enter number of elements in range [1-300]", 
         default = n_elements,
         minval = 1,
         maxval = 300
@@ -242,13 +246,21 @@ while True:
     tosort = scramble(n_elements)
     method = int(scr.numinput(
         "Select algorithm",
-        "Enter\n 1 for Selection sort\n 2 for Bubblesort\n 3 for combsort\n 4 for Insertion sort\n 5 for Binary insertion sort\n 6 for Quick sort\n 7 for Merge sort",
+        "Enter\n 1 -> Selection sort\n 2 -> Bubblesort\n 3 -> combsort\n 4 -> Insertion sort\n 5 -> Binary insertion sort\n 6 -> Quick sort\n 7 -> Merge sort",
         default=method, 
         minval=1,
         maxval=7)
     )
     if not method:break
-    
+    tmr = scramble(n_elements)
+    tmr_var = int(scr.numinput(
+        "Speed",
+        "Enter\n 1 -> Slow\n 2 -> Medium\n 3 -> Fast",
+        default=method, 
+        minval=1,
+        maxval=3)
+    )
+    if not tmr_var:break
     # starting sorting
     start = time.time()
     if   method==1:show_name("selection sort");tosort = selectionsort(tosort.copy())
