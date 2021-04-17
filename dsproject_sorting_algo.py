@@ -1,15 +1,16 @@
 
 
-import time, random, turtle
+import time, random, turtle,pyautogui
 
 # screen setup
 scr = turtle.Screen()
 scr.title("Sorting Algorithms Visualizer")
-Width=800
-Height=500
-scr.setup(width=800, height=500)
+Width1, Height1 = pyautogui.size()
+Width=Width1-50
+Height=Height1-50
+scr.setup(width=Width, height=Height, startx=0, starty=0)
 scr.tracer(0,0)
-scr.bgpic('images/bg.gif')
+scr.bgpic('images/dark.gif')
 scr.cv._rootwindow.resizable(False, False)
 
 # rendering turtle
@@ -76,7 +77,7 @@ def render(array, highlight=[], pivot=[]):
     renderer.clear()
     renderer.speed(0)
     length = n_elements
-    wid = 400/n_elements
+    wid = 900/n_elements
     for i,j in enumerate(array):
         color="cyan" if i in pivot else "blue" if i in highlight else "#AB3AD2"
         rectangle((i-length/2)*wid,(j-length/2)*wid,wid,(j+1)*wid, color)
