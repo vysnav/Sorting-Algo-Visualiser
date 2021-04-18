@@ -1,16 +1,7 @@
 # Sorting-Algo-Visualiser
 
-## Melcowe!
-This is a sorting algorithm visualiser which is comprised of all 7 types of sorting
-* Selection sort
-* Bubble sort
-* Combsort
-* Binary sort
-* Quick sort
-* Merge sort
+## About 
+This project is based upon the different sorting aalgorithms that are used in datastructures. This project illustrates the steps involving each sorting algorithm.
 
 
-## Prerequisites
-* `python`
-* `Tkinter`
 
