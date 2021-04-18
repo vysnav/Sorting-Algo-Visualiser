@@ -73,7 +73,7 @@ def render(array, highlight=[], pivot=[]):
     global tot_comparisions, start
     tot_comparisions+=1
     timer.clear()
-    timer.write(f"{time.time()-start:.2f} sec             {tot_comparisions} comparisions",align="center")
+    timer.write(f"{time.time()-start:.2f} sec             {tot_comparisions} comparisions",align="center", font=("Arial", 10, "normal"))
     renderer.clear()
     renderer.speed(0)
     length = n_elements
@@ -100,7 +100,7 @@ def scramble(l):
 
 # display name
 def show_name(name):
-    namer.clear();namer.setx(0);namer.write(name.title(),True,align="center")
+    namer.clear();namer.setx(0);namer.write(name.title(),True,align="center",font=("Arial", 10, "normal"))
 
 
 """ algos """
